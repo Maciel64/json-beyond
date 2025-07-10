@@ -1,29 +1,35 @@
-import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
+import { resolve } from "path";
+import { defineConfig } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    viteStaticCopy({
-      targets: [
-        { src: "manifest.json", dest: "." },
-        { src: "public/*", dest: "." },
-      ],
-    }),
-  ],
+  base: "./",
   build: {
+    assetsInlineLimit: 0,
     outDir: "dist",
     rollupOptions: {
-      input: {
-        popup: "popup.html",
-        background: "src/background.tsx",
-        content: "src/content.tsx",
-      },
       output: {
         entryFileNames: "[name].js",
+        chunkFileNames: "[name].js",
+        assetFileNames: "[name].[ext]",
+      },
+      input: {
+        main: resolve(__dirname, "index.html"),
       },
     },
   },
+  plugins: [
+    react(),
+    tailwindcss(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "manifest.json",
+          dest: ".",
+        },
+      ],
+    }),
+  ],
 });
