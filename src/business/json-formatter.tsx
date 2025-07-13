@@ -57,8 +57,6 @@ export function JsonFormatter({
           </motion.p>
         </div>
       )}
-
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-green-500/10 via-blue-500/10 to-purple-500/10 opacity-50 pointer-events-none" />
     </motion.div>
   );
 }

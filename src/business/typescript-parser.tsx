@@ -51,8 +51,6 @@ export function TypescriptParser({
           </motion.p>
         </div>
       )}
-
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 opacity-50 pointer-events-none" />
     </motion.div>
   );
 }
