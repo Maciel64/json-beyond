@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { CopyIcon, CheckIcon } from "@phosphor-icons/react";
@@ -7,9 +6,15 @@ interface CopyButtonProps {
   content: string;
   disabled?: boolean;
   text: string;
+  afterCopy?: () => void;
 }
 
-export function CopyButton({ content, disabled, text }: CopyButtonProps) {
+export function CopyButton({
+  content,
+  disabled,
+  text,
+  afterCopy,
+}: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState(false);
 
@@ -20,6 +25,7 @@ export function CopyButton({ content, disabled, text }: CopyButtonProps) {
       await navigator.clipboard.writeText(content);
       setCopied(true);
       setError(false);
+      afterCopy?.();
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Falha ao copiar:", err);
@@ -48,7 +54,6 @@ export function CopyButton({ content, disabled, text }: CopyButtonProps) {
       whileHover={!disabled ? { scale: 1.05 } : {}}
       whileTap={!disabled ? { scale: 0.95 } : {}}
     >
-      {/* Efeito de brilho no hover */}
       {!disabled && (
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       )}
