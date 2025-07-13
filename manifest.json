@@ -1,6 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Simple Json Formater For Navigator",
+  "name": "JSON Beyond For Navigator",
+  "description": "A powerful tool for formatting and converting JSON to TypeScript interfaces.",
   "version": "1.0",
   "action": {
     "default_popup": "index.html",

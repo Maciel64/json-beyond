@@ -1,6 +1,5 @@
-"use client";
 import { motion } from "framer-motion";
-import { Code, FileTs } from "@phosphor-icons/react";
+import { CodeIcon, FileTsIcon } from "@phosphor-icons/react";
 import type { Tab } from "../../App";
 
 interface TabSwitcherProps {
@@ -12,13 +11,13 @@ export function TabSwitcher({ tab, setTab }: TabSwitcherProps) {
   const tabs = [
     {
       id: "json" as Tab,
-      icon: Code,
+      icon: CodeIcon,
       label: "JSON",
       color: "from-blue-500 to-cyan-500",
     },
     {
       id: "typescript" as Tab,
-      icon: FileTs,
+      icon: FileTsIcon,
       label: "TypeScript",
       color: "from-blue-600 to-indigo-600",
     },
@@ -57,7 +56,6 @@ export function TabSwitcher({ tab, setTab }: TabSwitcherProps) {
               />
             </div>
 
-            {/* Tooltip */}
             <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-sm text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
               {tabItem.label}
             </div>
